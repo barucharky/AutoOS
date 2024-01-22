@@ -26,19 +26,19 @@ def check_dir(
 ):
 
   if dir.is_dir():
-      print(f'{dir} created successfully')
+      print(f'Directory: {dir} created successfully')
 
   else:
-      raise Exception(f'{dir} not created :)')
+      raise Exception(f'Directory: {dir} not created :)')
 
 # Check if file was created
 def check_file(filename):
 
     if filename.is_file():
-        print(f'{filename} created successfully')
+        print(f'File: {filename} created successfully')
 
     else:
-        raise Exception(f'{filename} not created :(')
+        raise Exception(f'File: {filename} not created :(')
 
 """### Functions for checking file contents"""
 
@@ -76,7 +76,6 @@ def create_path(
 
             if not destination_path.is_dir():
 
-                print(f"Creating {destination_path}...")
                 destination_path.mkdir()
                 check_dir(destination_path)
 
