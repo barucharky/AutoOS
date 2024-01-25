@@ -18,7 +18,14 @@ class Settings(BaseSettings):
 
 settings = Settings()
 
-# Test functions
+if not settings.HOME_DIR.is_dir():
+    raise Exception(f'HOME_DIR does not exist:\n{settings.HOME_DIR}')
+
+elif not settings.BACKUP_DIR.is_dir():
+    raise Exception(f'BACKUP_DIR does not exist:\n{settings.BACKUP_DIR}')
+
+elif not settings.IGNORE.is_file():
+    raise Exception(f'IGNORE does not exist:\n{settings.IGNORE}')
 
 # Check if directory was created
 def check_dir(
@@ -39,23 +46,6 @@ def check_file(filename):
 
     else:
         raise Exception(f'File: {filename} not created :(')
-
-"""### Functions for checking file contents"""
-
-def line_by_line(filename):
-
-    file = open(filename, 'r')
-    Lines = file.readlines()
-
-    for line in Lines:
-        print(line.strip())
-
-def check_files(dir):
-
-    for file in sorted(dir.glob('*')):
-
-      if file.is_file():
-          print(f'{file}: {file.read_text()}')
 
 # Bring contents of path_ignore_file into a list of Paths
 
